@@ -144,7 +144,7 @@ def main():
     st.set_page_config(page_title="Gemini PDF Chatbot", page_icon="🤖")
 
     with st.sidebar:
-        st.image("velesto_energy.jpeg", width=100)
+        st.image("logo1.jpeg", width=100)
         st.title("Menu:")
         pdf_docs = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True)
         if st.button("Submit & Process"):
