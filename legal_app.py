@@ -157,12 +157,6 @@ def main():
         st.subheader("Upload Company Images")
         company_images = st.file_uploader("Upload company images (optional)", accept_multiple_files=True)
         if company_images:
-            uploaded_images_folder = "uploaded_images"
-            os.makedirs(uploaded_images_folder, exist_ok=True)
-            for image in company_images:
-                image_path = os.path.join(uploaded_images_folder, image.name)
-                with open(image_path, "wb") as f:
-                    f.write(image.getbuffer())
             st.success("Images uploaded successfully")
 
         contract_title = st.text_input("Enter the title for the legal document:", "Employment Agreement")
