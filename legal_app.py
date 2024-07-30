@@ -112,15 +112,12 @@ def generate_legal_document(details, title="Employment Agreement", file_path="le
 
     content = []
 
-    # Add uploaded images
-    uploaded_images_folder = "uploaded_images"
-    if os.path.exists(uploaded_images_folder):
-        for image_file in os.listdir(uploaded_images_folder):
-            image_path = os.path.join(uploaded_images_folder, image_file)
-            if os.path.isfile(image_path):
-                image = Image(image_path, width=2*inch, height=1*inch)
-                content.append(image)
-                content.append(Spacer(1, 0.25 * inch))  # Reduced spacing after image
+    # Add logo image
+    logo_path = "logo1.png"
+    if os.path.exists(logo_path):
+        logo = Image(logo_path, width=2*inch, height=1*inch)
+        content.append(logo)
+        content.append(Spacer(1, 0.25 * inch))  # Reduced spacing after logo
 
     # Add title
     content.append(Spacer(1, 0.25 * inch))  # Reduced space before title
@@ -138,13 +135,11 @@ def generate_legal_document(details, title="Employment Agreement", file_path="le
     doc.build(content)
     return file_path
 
-
-
 def main():
     st.set_page_config(page_title="Gemini PDF Chatbot", page_icon="🤖")
 
     with st.sidebar:
-        st.image("logo1.jpeg", width=300)
+        st.image("logo1.png", width=300)
         st.title("Menu:")
         pdf_docs = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True)
         if st.button("Submit & Process"):
@@ -153,11 +148,6 @@ def main():
                 text_chunks = get_text_chunks(raw_text)
                 get_vector_store(text_chunks)
                 st.success("Done")
-
-        st.subheader("Upload Company Images")
-        company_images = st.file_uploader("Upload company images (optional)", accept_multiple_files=True)
-        if company_images:
-            st.success("Images uploaded successfully")
 
         contract_title = st.text_input("Enter the title for the legal document:", "Employment Agreement")
         legal_text = st.text_area("Enter text for legal document:")
@@ -173,7 +163,6 @@ def main():
             st.success("Legal document generated and ready for download")
         st.button('Clear Chat History', on_click=clear_chat_history)
         st.image("logo2.png", width=200)
-       
 
     st.title("Legal App LLM Summarization, Comparison & Generation🤖")
     st.write("Welcome to the chat!")
