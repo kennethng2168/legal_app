@@ -144,6 +144,7 @@ def main():
     st.set_page_config(page_title="Gemini PDF Chatbot", page_icon="🤖")
 
     with st.sidebar:
+        st.image("velesto_energy.jpeg", width=100)
         st.title("Menu:")
         pdf_docs = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True)
         if st.button("Submit & Process"):
@@ -176,8 +177,9 @@ def main():
                     mime="application/pdf"
                 )
             st.success("Legal document generated and ready for download")
+        st.image("logo2.png", width=100)
 
-    st.title("Chat with PDF files using Gemini🤖")
+    st.title("Legal App LLM Summarization, Comparison & Generation🤖")
     st.write("Welcome to the chat!")
     st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
