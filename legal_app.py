@@ -171,12 +171,12 @@ def main():
                     mime="application/pdf"
                 )
             st.success("Legal document generated and ready for download")
+        st.button('Clear Chat History', on_click=clear_chat_history)
+        st.image("logo2.png", width=200)
        
 
     st.title("Legal App LLM Summarization, Comparison & Generation🤖")
     st.write("Welcome to the chat!")
-    st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
-    st.image("logo2.png", width=200)
 
     if "messages" not in st.session_state:
         st.session_state.messages = [{"role": "assistant", "content": "Upload some PDFs and ask me a question."}]
